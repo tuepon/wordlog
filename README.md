@@ -23,5 +23,3 @@ Things you may want to cover:
 
 * ...
 # wordlog
-# wordlog
-# wordlog

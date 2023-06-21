@@ -4,7 +4,6 @@ class CreateWords < ActiveRecord::Migration[7.0]
       t.string :original
       t.string :translation
       t.text :description
-      t.timestamps
     end
   end
 end

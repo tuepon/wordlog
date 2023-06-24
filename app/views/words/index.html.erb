@@ -1,0 +1,20 @@
+<h1>Words listing page</h1>
+<table>
+    <thead>
+      <tr>
+        <th>Original</th>
+        <th>Translation</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @words.each do |word| %>
+      <tr>
+        <td><%= word.original %></td>
+        <td><%= word.translation %></td>
+        <td><%= word.description %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

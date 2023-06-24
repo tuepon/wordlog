@@ -1,0 +1,19 @@
+<h1>Create a new word</h1>
+
+<%= form_with scope: :word, url: words_path, local: true, data: { turbo: false } do |f| %>
+
+  <p>
+    <%= f.label :original %><br>
+    <%= f.text_field :original %>
+  </p>
+
+  <p>
+    <%= f.label :translation %><br>
+    <%= f.text_field :translation %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

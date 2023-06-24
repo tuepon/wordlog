@@ -1,4 +1,4 @@
-<h1>Create a new word</h1>
+<h1>Edit word</h1>
 
 <% if @word.errors.any? %>
   <h2>The following errors prevented the word from being saved</h2>
@@ -9,7 +9,7 @@
   </ul>
 <% end %>
 
-<%= form_with scope: :word, url: words_path, local: true, data: { turbo: false } do |f| %>
+<%= form_with(model: @word, local: true, data: { turbo: false }) do |f| %>
 
   <p>
     <%= f.label :original %><br>

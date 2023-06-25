@@ -2,3 +2,9 @@
 
 <p><strong>Original: </strong><%= @word.original %></p>
 <p><strong>Translation: </strong><%= @word.translation %></p>
+<p><strong>Description: </strong><%= @word.description %></p>
+
+<%= link_to 'Edit', edit_word_path(@word) %> |
+<%= link_to 'Delete', word_path(@word), data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?' } %> |
+<%= link_to 'Return to words listing', words_path %>
+

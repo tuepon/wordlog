@@ -4,7 +4,7 @@
       <tr>
         <th>Original</th>
         <th>Translation</th>
-        <th>Description</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -13,7 +13,9 @@
       <tr>
         <td><%= word.original %></td>
         <td><%= word.translation %></td>
-        <td><%= word.description %></td>
+        <td><%= link_to 'Show', word_path(word) %></td>
+        <td><%= link_to 'Edit', edit_word_path(word) %></td>
+        <td><%= link_to 'Delete', word_path(word.id), data: { "turbo-method": :delete } %></td>
       </tr>
     </tbody>
   <% end %>

@@ -35,4 +35,11 @@ class WordsController < ApplicationController
       render 'edit'
     end
   end
+
+  def destroy
+    @word = Word.find(params[:id])
+    @word.destroy
+    redirect_to words_path
+  end
+
 end

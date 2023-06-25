@@ -1,7 +1,7 @@
 class WordsController < ApplicationController
+  before_action :set_word, only: [:show, :edit, :update, :destroy]
   
   def show
-    @word = Word.find(params[:id])
   end
 
   def index
@@ -13,11 +13,10 @@ class WordsController < ApplicationController
   end
 
   def edit
-    @word = Word.find(params[:id])
   end
 
   def create
-    @word = Word.new(params.require(:word).permit(:original, :translation))
+    @word = Word.new(word_params)
     if @word.save
       flash[:notice] = "Word was created successfully."
       redirect_to @word
@@ -27,8 +26,7 @@ class WordsController < ApplicationController
   end
   
   def update
-    @word = Word.find(params[:id])
-    if @word.update(params.require(:word).permit(:original, :translation))
+    if @word.update(word_params)
       flash[:notice] = "Word was updated successfully."
       redirect_to @word
     else
@@ -37,9 +35,18 @@ class WordsController < ApplicationController
   end
 
   def destroy
-    @word = Word.find(params[:id])
     @word.destroy
     redirect_to words_path
+  end
+
+  private
+
+  def set_word
+    @word = Word.find(params[:id])
+  end
+
+  def word_params
+    params.require(:word).permit(:original, :translation)
   end
 
 end

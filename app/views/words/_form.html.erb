@@ -1,0 +1,26 @@
+<% if @word.errors.any? %>
+  <h2>The following errors prevented the word from being saved</h2>
+  <ul>
+    <% @word.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @word, local: true, data: { turbo: false }) do |f| %>
+
+  <p>
+    <%= f.label :original %><br>
+    <%= f.text_field :original %>
+  </p>
+
+  <p>
+    <%= f.label :translation %><br>
+    <%= f.text_field :translation %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

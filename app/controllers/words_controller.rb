@@ -39,6 +39,11 @@ class WordsController < ApplicationController
     redirect_to words_path
   end
 
+  def import
+    Word.import(params[:file])
+    redirect_to words_url
+  end
+
   private
 
   def set_word

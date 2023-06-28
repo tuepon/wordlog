@@ -40,8 +40,12 @@ class WordsController < ApplicationController
   end
 
   def import
-    Word.import(params[:file])
-    redirect_to words_url
+    if params[:file].nil?
+      redirect_to words_url
+    else
+      Word.import(params[:file])
+      redirect_to words_url
+    end
   end
 
   private

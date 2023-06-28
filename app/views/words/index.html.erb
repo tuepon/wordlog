@@ -23,4 +23,10 @@
 
 <p>
 <%= link_to 'Create new word', new_word_path %>
+
+<%= form_tag import_words_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "import" %>
+<% end %>
+
 </p>

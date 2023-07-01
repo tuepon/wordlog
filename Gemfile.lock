@@ -221,7 +221,7 @@ DEPENDENCIES
   bootsnap
   capybara
   debug
-  elm-rails (~> 0.4.2)
+  elm-rails
   importmap-rails
   jbuilder
   puma (~> 5.0)

@@ -72,4 +72,3 @@ group :test do
 end
 
 gem "roo"
-gem "elm-rails", "~> 0.4.2"

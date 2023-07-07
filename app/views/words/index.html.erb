@@ -15,7 +15,7 @@
         <td><%= word.translation %></td>
         <td><%= link_to 'Show', word_path(word) %></td>
         <td><%= link_to 'Edit', edit_word_path(word) %></td>
-        <td><%= link_to 'Delite', word_path(word.id), data: { "turbo-method": :delete , "turbo-confirm": "Are you sure?"} %></td>
+        <td><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
       </tr>
     </tbody>
   <% end %>

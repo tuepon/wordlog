@@ -73,5 +73,4 @@ end
 
 gem "roo"
 gem "bootstrap"
-
-gem "hotwire-rails", "~> 0.1.3"
+gem "htmx-rails"

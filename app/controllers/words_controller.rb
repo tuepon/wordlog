@@ -55,7 +55,7 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:original, :translation)
+    params.require(:word).permit(:title, :translation)
   end
 
 end

@@ -1,5 +1,9 @@
 class Word < ApplicationRecord
-  validates :original, presence: true, length: { maximum: 100 }
+  belongs_to :user
+
+  has_many_attached :images
+  
+  validates :title, presence: true, length: { maximum: 100 }
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
@@ -10,6 +14,6 @@ class Word < ApplicationRecord
   end
 
   def self.updatable_attributes
-    ["id", "original", "translation", "description"]
+    ["id", "title", "translation", "description"]
   end
 end

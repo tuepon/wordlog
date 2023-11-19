@@ -112,6 +112,7 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
+    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.0)
@@ -321,6 +322,7 @@ DEPENDENCIES
   debug
   devise
   factory_bot_rails
+  foreman
   importmap-rails
   jbuilder
   puma (~> 5.0)

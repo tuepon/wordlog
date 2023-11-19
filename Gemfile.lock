@@ -112,7 +112,6 @@ GEM
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
     ffi (1.15.5)
-    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.0)
@@ -126,6 +125,8 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jsbundling-rails (0.1.9)
+      railties (>= 6.0.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
     loofah (2.21.3)
@@ -281,6 +282,10 @@ GEM
     sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
+    tailwindcss-rails (2.0.32-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.32-x86_64-linux)
+      railties (>= 6.0.0)
     thor (1.2.2)
     tilt (2.2.0)
     timeout (0.3.2)
@@ -322,9 +327,9 @@ DEPENDENCIES
   debug
   devise
   factory_bot_rails
-  foreman
   importmap-rails
   jbuilder
+  jsbundling-rails (~> 0.1.0)
   puma (~> 5.0)
   rails (~> 7.0.5)
   roo
@@ -339,6 +344,7 @@ DEPENDENCIES
   sprockets-rails
   sqlite3 (~> 1.4)
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console

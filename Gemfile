@@ -49,7 +49,7 @@ gem "roo"
 gem "bootstrap"
 gem 'devise' 
 gem 'cssbundling-rails'
-gem 'foreman'
+gem "jsbundling-rails", "~> 0.1.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -84,3 +84,5 @@ group :test do
   gem "webdrivers"
 end
 
+
+gem "tailwindcss-rails", "~> 2.0"

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :words do
     collection { post :import }
   end
+  resources :users, only: [:show, :index]
 end

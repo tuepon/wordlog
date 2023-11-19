@@ -12,12 +12,14 @@ module Wordlog
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g| # add from here
+      g.assets false          # CSS, JavaScript files are not created automatically.
+      g.helper     false      # helper file is not created.
+      g.test_framework :rspec, # 5 lines added
+        fixtures: false, # テストDBにレコードを作るfixtureの作成をスキップ(FactoryBotを使用するため)
+        view_specs: false, # ビューファイル用のスペックを作成しない
+        helper_specs: false, # ヘルパーファイル用のスペックを作成しない
+        routing_specs: false # routes.rb用のスペックファイル作成しない
+    end  # add to here
   end
 end

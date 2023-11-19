@@ -11,7 +11,7 @@ describe User do
 
     subject { described_class.first }
 
-    it 'Return user that has been created' do
+    it 'returns user that has been created' do
       expect(subject.username).to eq('testuser')
       expect(subject.email).to eq('test@example.com')
     end

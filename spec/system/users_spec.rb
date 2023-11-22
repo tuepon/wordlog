@@ -1,9 +1,30 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :system do
-  before do
-    driven_by(:rack_test)
-  end
+RSpec.describe 'User', type: :system do
+  before { driven_by :selenium_chrome_headless }
+  # Variable for user input
+  let(:email) { 'test@example.com' }
+  let(:username) { 'testuser' }
+  let(:password) { '123123' }
+  let(:password_confirmation) { password }
 
-  pending "add some scenarios (or delete) #{__FILE__}"
+  describe 'Validate user sign up' do
+    before { visit '/users/sign_up' }
+
+    # Summerize each operation for user sign up
+    subject do
+      fill_in 'user_name', with: username
+      fill_in 'user_email', with: email
+      fill_in 'user_password', with: password
+      fill_in 'user_password_confirmation', with: password_confirmation
+      click_button 'Sign Up'
+    end
+
+    context 'Normal' do
+      it 'can register user' do
+        expect { subject }.to change(User, :count).by(1) # User increment 1
+        expect(current_path).to eq('/') # redirect to top page after sign up
+      end
+    end
+  end
 end

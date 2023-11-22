@@ -12,8 +12,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
+  <body class="h-screen bg-blue-50">
+    <main class="container mx-auto mt-20 py-8 px-5 flex items-center justify-center">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
   </body>
 </html>

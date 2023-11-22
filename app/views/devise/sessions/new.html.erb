@@ -1,4 +1,3 @@
-<div class="flex justify-center">
   <%= form_with scope: resource, as: resource_name, url: session_path(resource_name), class: "space-y-6 w-1/2 max-w-sm", local: true do |f| %>
     <label class="block text-xl font-bold text-gray-700">Login</label>
     <div class="mt-1">
@@ -18,4 +17,4 @@
         <%= f.submit "Login" %>
     </button>
   <% end %>
-</div>
+

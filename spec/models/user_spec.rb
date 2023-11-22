@@ -6,7 +6,7 @@ describe User do
 
   describe '.first' do
     before do
-      create(:user, username: username, email: email)
+      create(:user, username:, email:)
     end
 
     subject { described_class.first }

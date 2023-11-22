@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root 'home#index'
   get 'about', to: 'pages#about'
-  resources :words, only: [:show, :index, :new, :create, :edit, :update, :destroy]
+  resources :words, only: %i[show index new create edit update destroy]
   resources :words do
     collection { post :import }
   end
-  resources :users, only: [:show, :index]
+  resources :users, only: %i[show index]
 end

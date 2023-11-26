@@ -22,7 +22,8 @@ RSpec.describe 'User', type: :system do
 
     context 'Normal' do
       it 'can register user' do
-        expect { subject }.to change(User, :count).by(1) # User increment 1
+        expect { subject }.to change(User, :count).by(1) # User increments 1
+        expect(page).to have_content('User has successfully created')
         expect(current_path).to eq('/') # redirect to top page after sign up
       end
     end

@@ -28,4 +28,36 @@ RSpec.describe 'User', type: :system do
       end
     end
   end
+
+  describe 'Validate login functionality' do
+    before do
+      create(:user, nickname: nickname, email: email, password: password, password_confirmation: password)
+
+      visit '/users/sign_in'
+      fill_in 'user_email', with: email
+      fill_in 'user_password', with: 'password'
+      click_button 'Sign In'
+    end
+
+    context 'Normal' do
+      it 'Succeed to sign in, redirect to top page' do
+        expect(current_path).to eq('/')
+      end
+
+      it 'Show flash message after sign in' do # 追加
+        expect(page).to have_content('Signed in successfully')
+      end
+    end
+
+    context 'Error' do
+      let(:password) { 'NGpassword' }
+      it 'Fail to sign in, not redirect to top page' do
+        expect(current_path).to eq('/users/sign_in')
+      end
+
+      it 'Show flash message after fail to sign in' do  # 追加
+        expect(page).to have_content('Invalid Email or password')
+      end
+    end
+  end
 end

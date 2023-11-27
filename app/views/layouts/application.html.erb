@@ -13,8 +13,8 @@
   </head>
 
   <body class="h-screen bg-blue-50">
+    <%= render 'shared/flash' %>
     <main class="container mx-auto mt-20 py-8 px-5 flex items-center justify-center">
-      <%= render 'layouts/messages' %>
       <%= yield %>
   </body>
 </html>

@@ -31,12 +31,12 @@ RSpec.describe 'User', type: :system do
 
   describe 'Validate login functionality' do
     before do
-      create(:user, nickname: nickname, email: email, password: password, password_confirmation: password)
+      create(:user, username: username, email: email, password: password, password_confirmation: password)
 
       visit '/users/sign_in'
       fill_in 'user_email', with: email
       fill_in 'user_password', with: 'password'
-      click_button 'Sign In'
+      click_button 'Login'
     end
 
     context 'Normal' do

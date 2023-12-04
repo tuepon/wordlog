@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[show index]
-  get 'users/:id' => 'users#show'
 end

@@ -1,20 +1,20 @@
 <div>
-  <%# <%= image_tag user.profile_pic.attached? ? user.profile_pic : 'user-pp.png', class: "img-thumbnail rounded-circle w-25", style: "max-width: 8rem; max-height: 8rem" %> %>
+  <%= image_tag user.profile_pic.attached? ? user.profile_pic : 'user-pp.png', class: "img-thumbnail rounded-circle w-25", style: "max-width: 8rem; max-height: 8rem" %>
 
   <div>
     <div>
       <p><%= user.username %></p>
       <button> Message </button>
-      <%# <%= render 'layouts/shared/follow_state', user: user %> %>
+      <%= render 'layouts/shared/follow_state', user: user %>
       <% if user == current_user %>
         <%= link_to 'Edit Profile', edit_user_registration_path %>
       <% end %>
     </div>
 
     <div>
-      <%# <small class="fw-bold"><%= pluralize(user.posts.count, "post") %></small> %>
-      <%# <small class="fw-bold"><%= pluralize(user.followers.count, "Follower") %></small> %>
-      <%# <small class="fw-bold"><%= pluralize(user.followings.count, "Following") %></small> %>
+      <small class="fw-bold"><%= pluralize(user.posts.count, "post") %></small>
+      <small class="fw-bold"><%= pluralize(user.followers.count, "Follower") %></small>
+      <small class="fw-bold"><%= pluralize(user.followings.count, "Following") %></small>
     </div>
 
     <div>

@@ -1,5 +1,12 @@
-<h1>Home#index</h1>
+<div class="flex flex-col">
+  <h1 class="text-2xl my-5">This is homepage</h1>
 
-<% if current_user %>
-  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-<% end %>
+  <%= link_to 'Word listing page', words_path %>
+  <%= link_to 'About', about_path %>
+
+  <div class="my-10">
+  <% if current_user %>
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% end %>
+  </div>
+</div>

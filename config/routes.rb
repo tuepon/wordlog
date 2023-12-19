@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[show index]
+
+  word "toggle_like", to: "likes#toggle_like", as: :toggle_like
 end

@@ -17,18 +17,18 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="my-5">
     <%= form.label :allow_comments %>
-    <%= form.text_field :allow_comments, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.check_box :allow_comments, class: "block mt-2 h-5 w-5" %>
   </div>
 
   <div class="my-5">
     <%= form.label :show_likes_count %>
     <%= form.check_box :show_likes_count, class: "block mt-2 h-5 w-5" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div class="inline">

@@ -7,5 +7,6 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 20 }
 
   has_many :words
+  has_many :posts
   has_one_attached :profile_pic
 end

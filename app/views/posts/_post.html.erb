@@ -5,11 +5,6 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">User:</strong>
-    <%= post.user_id %>
-  </p>
-
-  <p class="my-5">
     <strong class="block font-medium mb-1">Allow comments:</strong>
     <%= post.allow_comments %>
   </p>
@@ -17,6 +12,13 @@
   <p class="my-5">
     <strong class="block font-medium mb-1">Show likes count:</strong>
     <%= post.show_likes_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Images:</strong>
+    <% post.images.each do |image| %>
+      <div><%= image_tag image %></div>
+    <% end %>
   </p>
 
   <% if action_name != "show" %>

@@ -1,10 +1,11 @@
-<div class="flex flex-col">
+<div class="mx-auto md:w-2/3 w-full">
   <h1 class="text-4xl font-semibold my-5">Words listing page</h1>
     <div class="my-5">
       <%= link_to 'Create new word', new_word_path, { class: "btn btn-blue" } %>
     </div>
 
     <div class="my-5">
+      <strong>Import CSV file:</strong>
       <%= form_tag import_words_path, multipart: true do %>
         <%= file_field_tag :file %>
         <%= submit_tag "import", { class: "btn btn-blue" } %>
@@ -22,7 +23,7 @@
           </thead>
 
           <tbody>
-            <% @words.each do |word| %>
+          <% @words.each do |word| %>
             <tr>
               <td class="table-cell"><%= word.title %></td>
               <td class="table-cell"><%= word.translation %></td>
@@ -30,8 +31,8 @@
               <td class="table-cell"><%= link_to 'Edit', edit_word_path(word) %></td>
               <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
             </tr>
+          <% end %>
           </tbody>
-        <% end %>
       </table>
     </div>
 </div>

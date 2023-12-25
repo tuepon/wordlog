@@ -4,7 +4,7 @@ class WordsController < ApplicationController
   def show; end
 
   def index
-    @words = Word.all
+    @words = current_user.words.all
   end
 
   def new
@@ -14,7 +14,7 @@ class WordsController < ApplicationController
   def edit; end
 
   def create
-    @word = Word.new(word_params)
+    @word = current_user.words.new(word_params)
     if @word.save
       flash[:notice] = 'Word was created successfully.'
       redirect_to @word
@@ -53,6 +53,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:title, :translation, :user_id, :show_like_count, images: [])
+    params.require(:word).permit(:title, :translation, :user_id, :show_like_count)
   end
 end

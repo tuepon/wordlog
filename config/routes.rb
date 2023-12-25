@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[show index]
 
   post "toggle_like", to: "likes#toggle_like", as: :toggle_like
+
+  resources :posts, only: %i[show index]
 end

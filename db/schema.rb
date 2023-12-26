@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_24_232221) do
 
   create_table "posts", force: :cascade do |t|
     t.string "caption"
+    t.text "body"
     t.integer "user_id", null: false
     t.boolean "allow_comments"
     t.boolean "show_likes_count"

@@ -51,6 +51,9 @@ gem 'cssbundling-rails'
 gem 'devise'
 gem 'jsbundling-rails', '~> 0.1.0'
 gem 'roo'
+gem 'deepl-rb', require: 'deepl'
+gem 'net-http'
+gem 'uri'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

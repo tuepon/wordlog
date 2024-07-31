@@ -1,5 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="text-4xl font-semibold my-5">Words listing page</h1>
+  <h1 class="text-4xl font-semibold my-5">Words Listing Page</h1>
     <div class="my-5">
       <%= link_to 'Create new word', new_word_path, { class: "btn btn-blue" } %>
     </div>
@@ -35,4 +35,5 @@
           </tbody>
       </table>
     </div>
+    <%= paginate @words %>
 </div>

@@ -1,17 +1,19 @@
 class WordsController < ApplicationController
   before_action :set_word, only: %i[show edit update destroy]
 
-  def show; end
-
   def index
-    @words = current_user.words.all
+    @words = current_user.words.all.page(params[:page]).per(25)
+  end
+
+  def show
   end
 
   def new
     @word = Word.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @word = current_user.words.new(word_params)

@@ -54,6 +54,7 @@ gem 'roo'
 gem 'deepl-rb', require: 'deepl'
 gem 'net-http'
 gem 'uri'
+gem 'kaminari'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

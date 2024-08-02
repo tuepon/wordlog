@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   before_action :set_word, only: %i[show edit update destroy]
 
   def index
-    @words = current_user.words.all.page(params[:page]).per(25)
+    @words = current_user.words.all
   end
 
   def show

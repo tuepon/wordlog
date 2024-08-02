@@ -7,8 +7,10 @@ class Word < ApplicationRecord
 
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-      word = find_by(id: row['id']) || new
+      word = find_by(title: row['title']) || new
       word.attributes = row.to_hash.slice(*updatable_attributes)
+      Rails.logger.debug { "word: #{word.inspect}" }
+      Rails.logger.debug { "word attributes: #{word.attributes}" }
       word.save
     end
   end

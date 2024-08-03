@@ -40,21 +40,22 @@ class WordsController < ApplicationController
   end
 
   def import
-    if params[:file].nil?
-      redirect_to words_url
+    if params[:file].present?
+      Word.import(params[:file], current_user)
+      flash[:notice] = 'Words were successfully imported.'
     else
-      Word.import(params[:file])
-      redirect_to words_url
+      flash[:alert] = 'Please upload a CSV file.'
     end
+    redirect_to words_url
   end
 
   private
 
   def set_word
-    @word = Word.find(params[:id])
+    @word = current_user.words.find(params[:id])
   end
 
   def word_params
-    params.require(:word).permit(:title, :translation, :user_id, :show_like_count)
+    params.require(:word).permit(:title, :translation, :user_id, :description, :file)
   end
 end

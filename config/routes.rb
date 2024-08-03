@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'sidekiq'
-
 Rails.application.routes.draw do
   devise_for :users
   resources :users, only: %i[show index]
@@ -17,6 +15,4 @@ Rails.application.routes.draw do
   resources :words do
     collection { post :import }
   end
-
-  mount Sidekiq::Web, at: '/sidekiq'
 end

@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      word:
+        title: 単語名
+        translation: 翻訳

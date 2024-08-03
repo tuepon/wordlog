@@ -5,17 +5,20 @@ class Word < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
 
-  def self.import(file)
+  def self.import(file, user)
     CSV.foreach(file.path, headers: true) do |row|
-      word = find_by(title: row['title']) || new
+      word = user.words.find_or_initialize_by(id: row['id'])
       word.attributes = row.to_hash.slice(*updatable_attributes)
-      Rails.logger.debug { "word: #{word.inspect}" }
-      Rails.logger.debug { "word attributes: #{word.attributes}" }
-      word.save
+      word.user = user # ユーザーを関連付ける
+      if word.save
+        Rails.logger.info "Word #{word.title} saved successfully"
+      else
+        Rails.logger.error "Failed to save word: #{word.errors.full_messages.join(', ')}"
+      end
     end
   end
 
   def self.updatable_attributes
-    %w[id title translation description]
+    %w[id title translation]
   end
 end

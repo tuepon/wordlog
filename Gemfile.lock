@@ -125,18 +125,6 @@ GEM
     jsbundling-rails (0.1.9)
       railties (>= 6.0.0)
     json (2.7.1)
-    kaminari (1.2.2)
-      activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.2.2)
-      kaminari-activerecord (= 1.2.2)
-      kaminari-core (= 1.2.2)
-    kaminari-actionview (1.2.2)
-      actionview
-      kaminari-core (= 1.2.2)
-    kaminari-activerecord (1.2.2)
-      activerecord
-      kaminari-core (= 1.2.2)
-    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.3)
     logger (1.6.0)
     loofah (2.22.0)
@@ -168,6 +156,7 @@ GEM
     nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.5.0)
     parallel (1.24.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -347,8 +336,8 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jsbundling-rails (~> 0.1.0)
-  kaminari
   net-http
+  pagy
   puma (~> 5.0)
   rails (~> 7.0.5)
   roo

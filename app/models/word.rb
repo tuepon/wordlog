@@ -9,7 +9,7 @@ class Word < ApplicationRecord
     CSV.foreach(file.path, headers: true) do |row|
       word = user.words.find_or_initialize_by(id: row['id'])
       word.attributes = row.to_hash.slice(*updatable_attributes)
-      word.user = user # ユーザーを関連付ける
+      word.user = user
       if word.save
         Rails.logger.info "Word #{word.title} saved successfully"
       else

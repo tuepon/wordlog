@@ -1,15 +1,17 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="text-4xl font-semibold my-5">Words Listing Page</h1>
-    <div class="my-5">
-      <%= link_to 'Create new word', new_word_path, { class: "btn btn-blue" } %>
-    </div>
+  <h1 class="text-4xl font-semibold">Word List</h1>
+    <div class="flex gap-20">
+      <div class="my-8">
+        <%= link_to 'Store New Word', new_word_path, { class: "btn btn-blue" } %>
+      </div>
 
-    <div class="my-5">
-      <strong>Import CSV file:</strong>
-      <%= form_tag import_words_path, multipart: true do %>
-        <%= file_field_tag :file %>
-        <%= submit_tag "import", { class: "btn btn-blue" } %>
-      <% end %>
+      <div class="items-end">
+        <div>Import form CSV</div>
+        <%= form_tag import_words_path, multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Submit", { class: "btn btn-blue" } %>
+        <% end %>
+      </div>
     </div>
 
     <div class="overflow-x-auto w-full">
@@ -35,4 +37,5 @@
           </tbody>
       </table>
     </div>
+    <%== pagy_nav(@pagy) %>
 </div>

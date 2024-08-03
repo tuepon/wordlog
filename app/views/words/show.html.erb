@@ -2,17 +2,16 @@
   <div class="card w-200 bg-base-100 shadow-xl">
     <figure class="px-5 pt-5 pb-10">
       <h1 class="text-4xl font-semibold my-5"><%= @word.title %></h1>
-      <ul>
-        <li class="text-xl my-10"><%= @word.translation %></li>
+      <ul class="my-10">
+        <li class="text-xl"><%= @word.translation %></li>
         <li><%= @word.description %></li>
       </ul>
-      <div class="flex my-5 gap-4">
-        <div class="my-3"><%= link_to 'Edit', edit_word_path(@word) %></div>
-        <div class="my-3"><%= link_to 'Delete', word_path(@word), data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?' } %></div>
+      <div class="flex flex-row my-6 gap-4">
+        <div class=""><%= link_to 'Edit', edit_word_path(@word) %></div>
+        <div class="text-red-500"><%= link_to 'Delete', word_path(@word), data: { "turbo-method": :delete, turbo_confirm: 'Are you sure?' } %></div>
       </div>
-
       <div class="inline-block align-text-bottom">  
-        <%= link_to 'Return to words listing', words_path %>
+        <%= link_to 'Back to Word list', words_path %>
       </div>
     </div>
   </div>

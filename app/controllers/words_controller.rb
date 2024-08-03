@@ -2,7 +2,7 @@ class WordsController < ApplicationController
   before_action :set_word, only: %i[show edit update destroy]
 
   def index
-    @words = current_user.words.all
+    @pagy, @words = pagy(current_user.words.all, items: 15)
   end
 
   def show
@@ -18,7 +18,7 @@ class WordsController < ApplicationController
   def create
     @word = current_user.words.new(word_params)
     if @word.save
-      flash[:notice] = 'Word was created successfully.'
+      flash[:notice] = 'Word was saved successfully!'
       redirect_to @word
     else
       render 'new'
@@ -27,7 +27,7 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
-      flash[:notice] = 'Word was updated successfully.'
+      flash[:notice] = 'Word was updated successfully!'
       redirect_to @word
     else
       render 'edit'
@@ -40,7 +40,7 @@ class WordsController < ApplicationController
   end
 
   def import
-    if params[:file].present?
+    if params[:file].present? && File.extname(params[:file]) == '.csv'
       Word.import(params[:file], current_user)
       flash[:notice] = 'Words were successfully imported.'
     else
@@ -56,6 +56,6 @@ class WordsController < ApplicationController
   end
 
   def word_params
-    params.require(:word).permit(:title, :translation, :user_id, :description, :file)
+    params.require(:word).permit(:title, :translation, :user_id, :description)
   end
 end

@@ -40,7 +40,7 @@ class WordsController < ApplicationController
   end
 
   def import
-    if params[:file].present? && File.extname(params[:file]) == '.csv'
+    if params[:file].present? && File.extname(params[:file]).downcase == '.csv'
       Word.import(params[:file], current_user)
       flash[:notice] = 'Words were successfully imported.'
     else

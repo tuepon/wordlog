@@ -6,19 +6,16 @@ class Word < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
 
   def self.import(file, user)
-    CSV.foreach(file.path, headers: true) do |row|
-      word = user.words.find_or_initialize_by(id: row['id'])
-      word.attributes = row.to_hash.slice(*updatable_attributes)
-      word.user = user
-      if word.save
-        Rails.logger.info "Word #{word.title} saved successfully"
-      else
-        Rails.logger.error "Failed to save word: #{word.errors.full_messages.join(', ')}"
+    transaction do
+      CSV.foreach(file.path, headers: true) do |row|
+        word = user.words.find_or_initialize_by(title: row['title'])
+        word.attributes = row.to_hash.slice(*updatable_attributes)
+        raise ActiveRecord::Rollback, "Failed to save word: #{word.errors.full_messages.join(', ')}" unless word.save
       end
     end
   end
 
   def self.updatable_attributes
-    %w[id title translation]
+    %w[title translation description]
   end
 end

@@ -11,16 +11,20 @@
 
   <p class="my-5">
     <%= f.label :title %>
-    <%= f.text_field :title, class: "p-1" %>
+    <%= f.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </p>
 
   <p class="my-5">
     <%= f.label :translation %>
-    <%= f.text_field :translation, class: "p-1" %>
+    <%= f.text_field :translation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </p>
+
+  <p class="my-5">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </p>
 
   <p class="my-5">
     <%= f.submit class: "btn btn-blue" %>
   </p>
-
 <% end %>

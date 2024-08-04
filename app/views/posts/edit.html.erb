@@ -1,8 +1,58 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">Editing post</h1>
+  <h1 class="font-bold text-4xl">Edit post</h1>
+  <%= form_with(model: @post, class: "contents") do |form| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-  <%= render "form", post: @post %>
+        <ul>
+          <% @post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="my-5">
+    <%= form.label :caption %>
+    <%= form.text_field :caption, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :allow_comments %>
+    <%= form.check_box :allow_comments, class: "block mt-2 h-5 w-5" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :show_likes_count %>
+    <%= form.check_box :show_likes_count, class: "block mt-2 h-5 w-5" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :images %>
+      <% if @post.images.attached? %>
+        <div>
+          <% @post.images.each do |image| %>
+            <div>
+              <%= image_tag image %>
+              <%= check_box_tag 'post[remove_image_ids][]', image.id %> Remove image
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
 
   <%= link_to "Show this post", @post, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   <%= link_to "Back to posts", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <% end %>
 </div>

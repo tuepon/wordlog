@@ -6,12 +6,11 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'about', to: 'pages#about'
-  
-  resources :posts, only: %i[show index]
+
   resources :posts
+
   post "toggle_like", to: "likes#toggle_like", as: :toggle_like
 
-  resources :words, only: %i[show index new create edit update destroy]
   resources :words do
     collection { post :import }
   end

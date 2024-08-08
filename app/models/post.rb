@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
   belongs_to :user
+  default_scope -> { order(created_at: :desc) }
+  validates :user_id, presence: true
+  has_many :posts, dependent: :destroy
   has_many_attached :images
 
   attr_accessor :remove_image_ids

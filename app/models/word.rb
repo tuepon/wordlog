@@ -1,6 +1,8 @@
 class Word < ApplicationRecord
   belongs_to :user
+  default_scope -> { order(created_at: :desc) }
 
+  has_many :words, dependent: :destroy
   has_many_attached :images
 
   validates :title, presence: true, length: { maximum: 100 }

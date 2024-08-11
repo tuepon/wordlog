@@ -8,5 +8,6 @@ class User < ApplicationRecord
 
   has_many :words
   has_many :posts
+  has_many :images
   has_one_attached :profile_pic
 end

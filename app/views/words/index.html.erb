@@ -6,7 +6,7 @@
       </div>
 
       <div class="items-end">
-        <div>Import form CSV</div>
+        <div>Import from CSV</div>
         <%= form_tag import_words_path, multipart: true do %>
           <%= file_field_tag :file %>
           <%= submit_tag "Upload", { class: "btn btn-blue" } %>
@@ -20,6 +20,7 @@
             <tr class="bg-gray-300">
               <th class="table-cell">Title</th>
               <th class="table-cell">Translation</th>
+              <th class="table-cell">Description</th>
               <th class="table-cell" colspan=3>Actions</th>
             </tr>
           </thead>
@@ -29,6 +30,7 @@
             <tr>
               <td class="table-cell"><%= word.title %></td>
               <td class="table-cell"><%= word.translation %></td>
+              <td class="table-cell"><%= word.description %></td>
               <td class="table-cell"><%= link_to 'Show', word_path(word) %></td>
               <td class="table-cell"><%= link_to 'Edit', edit_word_path(word) %></td>
               <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>

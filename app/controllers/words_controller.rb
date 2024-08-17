@@ -3,7 +3,13 @@ class WordsController < ApplicationController
   before_action :set_word, only: %i[show edit update destroy]
 
   def index
-    @pagy, @words = pagy(current_user.words.all, items: 15)
+    if params[:q].present?
+      @q = Word.ransack(params[:q])
+      @pagy, @words = pagy(@q.result(distinct: true), items: 15)
+    else
+      @pagy, @words = pagy(current_user.words.all, items: 15)
+      Rails.logger.debut "value is: #{@words}"
+    end
   end
 
   def show

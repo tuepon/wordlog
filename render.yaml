@@ -1,0 +1,23 @@
+databases:
+  - name: WordLog.db 
+    databaseName: wordlog_db
+    user: wordlog 
+    region: singapore
+
+services:
+  - type: web
+    name: wordlog 
+    env: ruby
+    region: singapore
+    plan: starter 
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: WordLog.db 
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+
+

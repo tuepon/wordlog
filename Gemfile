@@ -47,7 +47,6 @@ gem 'sassc-rails'
 # My additions
 gem 'deepl-rb', require: 'deepl'
 gem 'cssbundling-rails'
-gem 'deepl-rb', require: 'deepl'
 gem 'devise'
 gem 'jsbundling-rails', '~> 0.1.0'
 gem 'net-http'

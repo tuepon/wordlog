@@ -11,6 +11,7 @@ services:
     region: singapore
     plan: starter 
     buildCommand: "./bin/render-build.sh"
+    preDeployCommand: "bundle exec rails db:migrate"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL

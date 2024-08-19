@@ -77,8 +77,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_04_000529) do
     t.string "title"
     t.string "translation"
     t.text "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer "user_id"
     t.index ["user_id"], name: "index_words_on_user_id"
   end

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :posts
   devise_for :users
   
-  root 'home#index'
+  root to: 'home#index'
+
   get 'about', to: 'pages#about'
-  
+
+  resources :posts
   post "toggle_like", to: "likes#toggle_like", as: :toggle_like
-  
-  resources :users, only: [:show, :index]
+    
+  resources :users, only: [:show]
   resources :words do
     collection { post :import }
   end

@@ -28,8 +28,10 @@
 
   <% if action_name != "show" %>
     <%= link_to "Show this post", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Delete post', post, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+      <% if user_signed_in? && post.user == current_user %>
+        <%= link_to "Edit this post", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+        <%= link_to 'Delete post', post, data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %>
+      <% end %>  
     <hr class="mt-6">
   <% end %>
 </div>

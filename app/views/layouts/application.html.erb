@@ -15,5 +15,11 @@
     <%= render 'shared/navbar' %>
     <main class="container mx-auto mt-20 py-8 px-5 flex items-center justify-center">
       <%= yield %>
+    </main>
+    <% if Rails.env.development? %>
+      <div class="bg-gray-100 text-red-500 p-4 rounded-lg">
+        <%= debug(params) %>
+      </div>
+    <% end %>
   </body>
 </html>

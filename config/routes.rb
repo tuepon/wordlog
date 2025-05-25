@@ -9,9 +9,13 @@ Rails.application.routes.draw do
 
   resources :posts
   post "toggle_like", to: "likes#toggle_like", as: :toggle_like
-    
+
   resources :users, only: [:show]
   resources :words do
-    collection { post :import }
+    collection do
+      post :import
+      get :export
+    end
+    
   end
 end

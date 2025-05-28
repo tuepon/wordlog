@@ -1,16 +1,13 @@
 class WordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show] # index, showはログイン不要
-  before_action :check_admin, only: [:create, :new] # 管理者のみ作成可能
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_own_word!, only: [:edit, :update, :destroy]
   before_action :set_word, only: %i[show edit update destroy]
 
   def index
     @q = Word.ransack(params[:q])
-
-    if params[:q].present?
-      @pagy, @words = pagy(@q.result(distinct: true), items: 15)
-    else
-      @pagy, @words = pagy((current_user&.words || Word.none), items: 15)
-    end
+    words_scope = params[:q].present? ? @q.result(distinct: true) : (current_user ? current_user.words : Word.all)
+  
+    @pagy, @words = pagy(words_scope, items: 15)
   end
 
   def show
@@ -65,7 +62,7 @@ class WordsController < ApplicationController
         csv_data = CSV.generate(headers: true) do |csv|
           csv << %w[id word definition created_at updated_at] # ヘッダーを設定
           @words.each do |word|
-            csv << [word.id, word.word, word.definition, word.created_at, word.updated_at]
+            csv << [word.id, word.title, word.translation, word.created_at, word.updated_at]
           end
         end
         send_data csv_data, filename: "words_#{Time.zone.now.strftime('%Y%m%d')}.csv"
@@ -76,16 +73,17 @@ class WordsController < ApplicationController
   private
 
   def set_word
-    @word = current_user.words.find(params[:id])
+    @word = Word.find(params[:id])
   end
 
-  def check_admin
-    return if current_user&.admin?
-      redirect_to root_path, alert: '権限がありません' # rubocop:disable Rails/I18nLocaleTexts
+  def authorize_own_word!
+    @word = Word.find(params[:id])
+      unless @word.user == current_user
+      redirect_to words_path, alert: "自分の単語しか操作できません。"
+    end
   end
 
   def word_params
     params.require(:word).permit(:title, :translation, :user_id, :description)
   end
-
 end

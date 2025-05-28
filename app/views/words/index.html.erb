@@ -1,49 +1,57 @@
-<div class="mx-auto md:w-2/3 w-full">
+<div class="mx-auto w-full md:w-2/3 px-4 py-8">
   <h1 class="text-4xl font-semibold">Word List</h1>
-    <div class="flex gap-10">
-      <div>
-        <%= search_form_for @q do |f| %>
-          <%= f.label :title_or_translation_cont, 'title or translation' %>
-          <%= f.search_field :title_or_translation_cont %>
-          <%= f.submit "Search", { class: "btn btn-blue" } %>
-        <% end %>
+  
+      <div class="flex flex-wrap items-center gap-6 my-4">
+        <!-- 検索フォーム -->
+          <%= search_form_for @q do |f| %>
+          <div class="mb-4">
+            <label class="text-sm text-gray-600 mb-1">title or translation</label>
+            <%= f.search_field :title_or_translation_cont, class: "border rounded px-2 py-1" %>
+            <%= f.submit "Search", class: "btn bg-blue-600 text-white hover:bg-blue-700" %>
+          </div>
+          <% end %>
+
+          <!-- 新規追加 -->
+          <% if user_signed_in? %>
+          <div class="mt-2 h-full">
+            <%= link_to '単語登録', new_word_path, { class: "btn btn-blue" } %>
+          </div>
+          <!-- CSVインポート -->
+          <div class="ml-4">
+            <label class="text-sm text-gray-600 mb-1">Import from CSV</label>
+            <%= form_tag import_words_path, multipart: true do %>
+              <%= file_field_tag :file %>
+              <%= submit_tag "アップロード", { class: "btn btn-blue mb-4" } %>
+            <% end %>
+          </div>
+          <% end %>
       </div>
 
-      <div class="my-8">
-        <%= link_to 'Store New Word', new_word_path, { class: "btn btn-blue" } %>
-      </div>
-
-      <div>
-        <small>Import from CSV</small>
-        <%= form_tag import_words_path, multipart: true do %>
-          <%= file_field_tag :file %>
-          <%= submit_tag "Upload", { class: "btn btn-blue" } %>
-        <% end %>
-      </div>
-    </div>
 
     <div class="overflow-x-auto w-full">
-      <table>
-          <thead>
-            <tr class="bg-gray-300">
-              <th class="table-cell">Title</th>
-              <th class="table-cell">Translation</th>
-              <th class="table-cell">Description</th>
-              <th class="table-cell" colspan=3>Actions</th>
+      <table class="min-w-full table-auto border border-gray-200 mt-4">
+          <thead class="bg-gray-100 text-gray-700">
+            <tr>
+              <th class="px-4 py-2 border">Title</th>
+              <th class="px-4 py-2 border">Translation</th>
+              <th class="px-4 py-2 border">Description</th>
+              <th class="px-4 py-2 border" colspan=3>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-          <% @words.each do |word| %>
-            <tr>
-              <td class="table-cell"><%= word.title %></td>
-              <td class="table-cell"><%= word.translation %></td>
-              <td class="table-cell"><%= word.description %></td>
-              <td class="table-cell"><%= link_to 'Show', word_path(word) %></td>
-              <td class="table-cell"><%= link_to 'Edit', edit_word_path(word) %></td>
-              <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
-            </tr>
-          <% end %>
+            <% @words.each do |word| %>
+              <tr>
+                <td class="table-cell"><%= word.title %></td>
+                <td class="table-cell"><%= word.translation %></td>
+                <td class="table-cell"><%= word.description %></td>
+                <td class="table-cell"><%= link_to 'Show', word_path(word) %></td>
+                <% if user_signed_in? %>
+                  <td class="table-cell"><%= link_to 'Edit', edit_word_path(word) %></td>
+                  <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+                <% end %>
+              </tr>
+            <% end %>
           </tbody>
       </table>
     </div>

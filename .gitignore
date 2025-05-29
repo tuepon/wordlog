@@ -55,3 +55,5 @@ node_modules
 # Ignore additional directories and files
 vendor/bundle
 .env
+
+/config/master.key

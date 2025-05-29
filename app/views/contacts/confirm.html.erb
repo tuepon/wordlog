@@ -1,0 +1,17 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl mb-4">Confirm Contact</h1>
+
+  <dl class="mb-5">
+    <dt class="font-medium">Name:</dt>
+    <dd class="mb-2"><%= @contact.name %></dd>
+  </dl>
+
+  <%= form_with(model: @contact, url: contacts_path, local: true) do |form| %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag "contact[name]", @contact.name %>
+
+    <%= form.submit "Submit", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+  <% end %>
+
+  <%= button_to "Back", new_contact_path, method: :get, class: "ml-3 rounded-lg py-3 px-5 bg-gray-300 inline-block font-medium" %>
+</div>

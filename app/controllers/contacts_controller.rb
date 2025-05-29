@@ -1,4 +1,6 @@
 class ContactsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create, :confirm]
+
   def new
     @contact = Contact.new
   end
@@ -9,7 +11,11 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-    @contact.save
+      if @contact.save
+      redirect_to root_path, notice: 'お問い合わせを送信しました。'
+    else
+      render :new
+    end
   end
 
   private

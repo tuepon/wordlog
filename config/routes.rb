@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :contacts, only: %i[new create] do
+  resources :contacts, only: [:new, :create] do
     collection do
       post :confirm
     end

@@ -16,6 +16,11 @@ Rails.application.routes.draw do
       post :import
       get :export
     end
-    
+  end
+
+  resources :contacts, only: %i[new create] do
+    collection do
+      post :confirm
+    end
   end
 end

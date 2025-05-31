@@ -4,3 +4,7 @@ ja:
       word:
         title: 単語名
         translation: 翻訳
+      contacts:
+        name: お名前
+        email: メールアドレス
+        telephone: 電話番号

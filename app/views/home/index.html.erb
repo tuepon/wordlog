@@ -1,17 +1,17 @@
-<div class="flex mx-auto w-full">
-  <div class="justify-center">
-    <h1 class="text-4xl font-semibold my-5">Home page</h1>
-    <ul>
-      <li class="text-2xl my-3"><%= link_to 'Posts Page', posts_path %></li>
-      <li class="text-2xl my-3"><%= link_to 'Word List', words_path %></li>
-      <li class="text-2xl my-3"> <%= link_to 'About', about_path %></li>
-      <li class="text-2xl my-3"> <%= link_to 'Contact', new_contact_path %></li>
-    </ul>
+<div class="mx-auto w-full md:w-2/3 px-4 py-8 mt-20">
+  <h1 class="text-4xl font-semibold">Home page</h1>
+    <div class="flex flex-wrap items-center gap-6 my-4">
+      <ul>
+        <li class="text-2xl my-3"><%= link_to 'Posts Page', posts_path %></li>
+        <li class="text-2xl my-3"><%= link_to 'Word List', words_path %></li>
+        <li class="text-2xl my-3"> <%= link_to 'About', about_path %></li>
+        <li class="text-2xl my-3"> <%= link_to 'Contact', new_contact_path %></li>
+      </ul>
+    </div>
 
     <div class="text-xl my-10">
     <% if current_user %>
       <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
     <% end %>
     </div>
-  </div>
 </div>

@@ -10,10 +10,10 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="h-screen bg-blue-50 mx-auto w-full">
+  <body class="min-h-screen flex flex-col bg-blue-50">
     <%= render 'shared/flash' %>
     <%= render 'shared/navbar' %>
-    <main class="container mx-auto px-5 py-12 flex flex-grow items-center justify-center">
+    <main class="container mx-auto px-5 pt-20">
       <%= yield %>
     </main>
 

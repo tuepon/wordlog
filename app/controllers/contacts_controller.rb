@@ -8,18 +8,26 @@ class ContactsController < ApplicationController
   def confirm
     @contact = Contact.new(contact_params)
     unless @contact.valid?
-      render :new and return
+      render :new
     end
   end
 
   def create
-    @contact = Contact.new(contact_params)
-      return render :new if params[:button] == 'back'
-      if @contact.save
-        redirect_to complete_contacts_url, notice: 'お問い合わせを送信しました。'
-      else
-        render :confirm
+    if params[:back]
+      @contact = Contact.new(contact_params)
+      render :new and return
     end
+
+    @contact = Contact.new(contact_params)
+    if @contact.save
+      redirect_to complete_contacts_path
+    else
+      render :new
+    end
+  end
+
+  def complete
+    @contact = Contact.find_by(id: session[:session_id])
   end
 
   private

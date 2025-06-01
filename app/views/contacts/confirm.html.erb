@@ -6,7 +6,22 @@
     <dd class="mb-2"><%= @contact.name %></dd>
   </dl>
 
-  <%= form_with(model: @contact, url: contacts_path, local: true) do |form| %>
+  <dl class="mb-5">
+    <dt class="font-medium">Email:</dt>
+    <dd class="mb-2"><%= @contact.email %></dd>
+  </dl>
+
+  <dl class="mb-5">
+    <dt class="font-medium">Telephone:</dt>
+    <dd class="mb-2"><%= @contact.telephone %></dd>
+  </dl>
+
+  <dl class="mb-5">
+    <dt class="font-medium">Body:</dt>
+    <dd class="mb-2"><%= @contact.body %></dd>
+  </dl>
+
+  <%= form_with(model: @contact, url: contacts_path, local: true, method: :post) do |form| %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag "contact[name]", @contact.name %>
     <%= hidden_field_tag "contact[email]", @contact.email %>

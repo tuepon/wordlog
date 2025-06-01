@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p><%= @contact.name %> 様</p>
+
+    <p>お問い合わせありがとうございます。</p>
+
+    <p>以下の内容でお問い合わせを受け付けました：</p>
+
+    <hr>
+    <p><strong>お名前:</strong> <%= @contact.name %></p>
+    <p><strong>メールアドレス:</strong> <%= @contact.email %></p>
+    <p><strong>電話番号:</strong> <%= @contact.telephone %></p>
+    <p><strong>お問い合わせ内容:</strong></p>
+    <p><%= @contact.body %></p>
+    <hr>
+
+    <p>返信までしばらくお待ちください。</p>
+  </body>
+</html>

@@ -41,6 +41,15 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', protocol: 'http', port: 3000 }
+  config.action_mailer.smtp_settings = { address: 'mailcatcher', port: 1025, return_response: true }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.asset_host = 'http://localhost:3000'
+
+  # 非同期処理にsidekiqを使う設定
+  config.active_job.queue_adapter = :sidekiq
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

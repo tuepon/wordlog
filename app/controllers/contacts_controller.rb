@@ -13,17 +13,11 @@ class ContactsController < ApplicationController
   end
 
   def create
-    if params[:back]
-      @contact = Contact.new(contact_params)
-      render :new and return
-    end
-
     @contact = Contact.new(contact_params)
-    if @contact.save
-      redirect_to complete_contacts_path
-    else
-      render :new
-    end
+    return render :new if params[:button] == 'back'
+    return redirect_to complete_contacts_url if @contact.save
+
+    render :confirm
   end
 
   def complete

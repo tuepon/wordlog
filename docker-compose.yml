@@ -22,10 +22,24 @@ services:
       - "3000:3000"
     depends_on:
       - db
+      - mailcatcher
+      - redis
     environment:
+      TZ: Asia/Tokyo
       DATABASE_URL: postgres://postgres:password@db:5432/myapp_development
     stdin_open: true
     tty: true
+
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
 
 volumes:
   postgres_data:

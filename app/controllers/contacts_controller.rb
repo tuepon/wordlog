@@ -7,6 +7,9 @@ class ContactsController < ApplicationController
 
   def confirm
     @contact = Contact.new(contact_params)
+    unless @contact.valid?
+      render :new and return
+    end
   end
 
   def create
@@ -22,6 +25,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-    params.require(:contact).permit(:name)
+    params.require(:contact).permit(:name, :email, :telephone, :body)
   end
 end

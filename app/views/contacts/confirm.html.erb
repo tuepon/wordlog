@@ -9,11 +9,12 @@
   <%= form_with(model: @contact, url: contacts_path, local: true) do |form| %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag "contact[name]", @contact.name %>
-    <div>
-      <%= form.submit "Submit", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
-    </div>
-    <div>
-      <%= form.submit "キャンセル", value: 'back', class: "ml-3 rounded-lg py-3 px-5 bg-gray-300 inline-block font-medium" %>
-    </div>
+    <%= hidden_field_tag "contact[email]", @contact.email %>
+    <%= hidden_field_tag "contact[telephone]", @contact.telephone %>
+    <%= hidden_field_tag "contact[body]",  @contact.body %>
+  <div class="flex gap-4 mt-4">
+    <%= form.submit "Submit", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
+    <%= form.submit "キャンセル", value: 'back', class: "rounded-lg py-3 px-5 bg-gray-300 font-medium" %>
+  </div>
   <% end %>
 </div>

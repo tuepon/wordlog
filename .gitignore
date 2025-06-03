@@ -5,6 +5,7 @@
 
 # Ignore bundler config.
 .bundle
+vendor/bundle
 
 # Ignore the default SQLite database.
 db/*.sqlite3
@@ -53,7 +54,4 @@ node_modules
 .DS_Store
 
 # Ignore additional directories and files
-vendor/bundle
 .env
-
-/config/master.key

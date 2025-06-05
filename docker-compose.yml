@@ -18,6 +18,7 @@ services:
     container_name: app
     volumes:
       - .:/app
+    user: "${UID}:${GID}"
     ports:
       - "3000:3000"
     depends_on:

@@ -26,8 +26,10 @@ services:
       - mailcatcher
       - redis
     environment:
-      TZ: Asia/Tokyo
-      DATABASE_URL: postgres://postgres:password@db:5432/myapp_development
+      - TZ=Asia/Tokyo
+      - DATABASE_URL=postgres://postgres:password@db:5432/myapp_development
+      - UID=${UID}
+      - GID=${GID}
     stdin_open: true
     tty: true
 

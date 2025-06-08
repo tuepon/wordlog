@@ -1,32 +1,32 @@
-  <%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), class: "space-y-6 w-3/4 max-w-lg" ,local: true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_with scope: resource, as: resource_name, url: registration_path(resource_name), class: "mx-auto space-y-6 w-3/4 max-w-lg" ,local: true do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-  <label class="block text-xl font-bold text-gray-700">User registration</label>
-  <div class="mt-1">
-    <label class="text-gray-700 text-md">
-      Email
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "test@exeample.com" %>
+<label class="block text-xl font-bold text-gray-700">Sign Up</label>
+<div class="mt-1">
+  <label class="text-gray-700 text-md">
+    Email
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "test@exeample.com" %>
+</div>
+<div class="mt-1">
+  <label class="text-gray-700 text-md">
+    Username
+  </label>
+  <%= f.text_field :username, autocomplete: "username", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter username" %>
+</div>
+<div class="mt-1">
+  <label class="text-gray-700 text-md">
+    Password(6 characters at least)
+  </label>
+  <%= f.password_field :password, autocomplete: "new-password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter password" %>
+</div>
+<div class="mt-1">
+  <label class="text-gray-700 text-md">
+    Password confirmation
+  </label>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter password again" %>
   </div>
-  <div class="mt-1">
-    <label class="text-gray-700 text-md">
-      Username
-    </label>
-    <%= f.text_field :username, autocomplete: "username", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter username" %>
-  </div>
-  <div class="mt-1">
-    <label class="text-gray-700 text-md">
-      Password(6 characters at least)
-    </label>
-    <%= f.password_field :password, autocomplete: "new-password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter password" %>
-  </div>
-  <div class="mt-1">
-    <label class="text-gray-700 text-md">
-      Password confirmation
-    </label>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter password again" %>
-    </div>
 
-    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-      <%= f.submit "Sign Up" %>
-    </button>
-  <% end %>
+  <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+    <%= f.submit "Sign Up" %>
+  </button>
+<% end %>

@@ -79,6 +79,7 @@ group :development do
   gem 'rubocop-rspec' # add
   gem 'spring-commands-rspec'
   gem 'web-console'
+  gem 'foreman'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"

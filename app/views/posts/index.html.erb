@@ -9,7 +9,7 @@
       <div class="card shadow-lg bg-white rounded-lg p-5">
         <div class="card-body">
           <h2 class="font-bold text-4xl mb-4">
-            <%= link_to post.caption, post_path(post), class: "text-blue-600 hover:text-blue-800 underline" %>
+            <%= link_to post.caption, post_path(post), class: "text-blue-600 hover:text-blue-800" %>
           </h2>
           <p class="text-sm text-gray-500">
             <%= post.created_at.strftime("%B %d, %Y") %> Posted by <%= post.user.username %>

@@ -12,6 +12,10 @@
     </label>
     <%= f.password_field :password, autocomplete: "password", class: "shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm placeholder-gray-400 border border-gray-300 rounded-md", placeholder: "Enter your password" %>
   </div>
+  <div class="field">
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me, "Keep logged in" %>
+  </div>
 
   <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
       <%= f.submit "Login" %>

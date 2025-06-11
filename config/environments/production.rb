@@ -1,6 +1,10 @@
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
+  # My domain setting 
+  config.hosts << "webisle.net"
+  config.hosts << "www.webisle.net"
+
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   host = 'https://wordlog.onrender.com'
@@ -101,7 +105,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # My domain setting 
-  config.hosts << 'www.webisle.net'
 end

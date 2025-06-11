@@ -103,5 +103,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # My domain setting 
-  config.host << 'www.webisle.net'
+  config.hosts << 'www.webisle.net'
 end

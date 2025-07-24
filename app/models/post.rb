@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   private
 
   def purge_images
-    images.where(id: remove_image_ids).find_each(&:purge_later)
+    images.attachments.where(id: remove_image_ids).find_each(&:purge_later)
   end
 
   def remove_image_ids?

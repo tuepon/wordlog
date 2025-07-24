@@ -4,6 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^8.0.5",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "autoprefixer": "^10.4.2",
     "daisyui": "^4.4.19",
     "esbuild": "^0.19.7",

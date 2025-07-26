@@ -22,8 +22,20 @@
   </div>
 
   <div class="my-5">
-    <%= label_tag :tag_names, "Tags (comma separated)" %>
-    <%= text_field_tag :tag_names, @post.tags.map(&:name).join(','), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= label_tag :tag_names, "Tags" %>
+    <%= text_field_tag :tag_names, @post.tags.map(&:name).join(', '),
+        class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
+        id: "tag-input" %>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mt-3">
+    <% Tag.all.each do |tag| %>
+      <button type="button" 
+              class="tag-button px-2 py-1 bg-gray-100 border rounded hover:bg-blue-100" 
+              data-tag="<%= tag.name %>">
+        <%= tag.name %>
+      </button>
+    <% end %>
   </div>
 
   <div class="my-5">

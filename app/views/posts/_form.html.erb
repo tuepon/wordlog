@@ -22,6 +22,11 @@
   </div>
 
   <div class="my-5">
+    <%= label_tag :tag_names, "Tags (comma separated)" %>
+    <%= text_field_tag :tag_names, @post.tags.map(&:name).join(','), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
     <%= form.label :allow_comments %>
     <%= form.check_box :allow_comments, class: "block mt-2 h-5 w-5" %>
   </div>

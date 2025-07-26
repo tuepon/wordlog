@@ -1,0 +1,11 @@
+<aside class="p-4 bg-gray-50 rounded shadow">
+  <h3 class="text-sm font-bold mb-3">Tags</h3>
+  <ul class="flex flex-wrap gap-2">
+    <% @all_tags.each do |tag| %>
+      <li>
+        <%= link_to tag.name, posts_path(tag: tag.name),
+                    class: "px-2 py-1 bg-gray-200 rounded hover:bg-gray-300 text-xs" %>
+      </li>
+    <% end %>
+  </ul>
+</aside>

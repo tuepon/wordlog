@@ -5,7 +5,12 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.all
+    @posts = if params[:tag]
+               Post.joins(:tags).where(tags: { name: params[:tag] }).order(created_at: :desc)
+             else
+               Post.all.order(created_at: :desc)
+             end
+    @tags = Tag.all.order(:name)
   end
 
   # GET /posts/1 or /posts/1.json
@@ -27,6 +32,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        update_tags(@post)
         format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -40,6 +46,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        update_tags(@post)
         format.html { redirect_to post_url(@post), notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -68,11 +75,22 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:caption, :body, :user_id, :allow_comments, :show_likes_count, images: [], remove_image_ids: [])
+    params.require(:post).permit(
+      :caption, :body, :user_id, :allow_comments, :show_likes_count, images: [], remove_image_ids: [], tags_attributes: [:name]
+    )
   end
 
   def correct_user
     @post = current_user.posts.find_by(id: params[:id])
-    redirect_to posts_path, alert: "Not authorized to edit this post" if @post.nil?
+    redirect_to posts_path, alert: 'Not authorized to edit this post' if @post.nil?
+  end
+
+  def update_tags(post)
+    Tag.where.missing(:taggings).destroy_all
+    tag_names = params[:tag_names].to_s.split(',').map(&:strip).reject(&:empty?)
+    post.tags = tag_names.map { |name| Tag.find_or_create_by(name: name) }
+
+    # Delete isolated tag.
+    Tag.where.missing(:taggings).destroy_all
   end
 end

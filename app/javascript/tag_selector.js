@@ -1,29 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const tagInput = document.getElementById("tag-input");
-  const tagButtons = document.querySelectorAll(".tag-button");
+  const input = document.querySelector("#tag-input");
+  const buttons = document.querySelectorAll(".tag-button");
 
-  if (!tagInput) return;
+  if (!input || buttons.length === 0) return;
 
-  tagButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const tag = button.dataset.tag;
-      let currentTags = tagInput.value
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tag = btn.dataset.tag;
+      let tags = input.value
         .split(",")
         .map((t) => t.trim())
-        .filter((t) => t.length > 0);
+        .filter((t) => t !== "");
 
-      if (currentTags.includes(tag)) {
-        // すでにある場合は削除
-        currentTags = currentTags.filter((t) => t !== tag);
-        button.classList.remove("bg-blue-600", "text-white");
-        button.classList.add("bg-gray-100");
+      // クリック時に選択トグル
+      if (tags.includes(tag)) {
+        tags = tags.filter((t) => t !== tag);
+        btn.classList.remove("bg-blue-500", "text-white");
+        btn.classList.add("bg-gray-100");
       } else {
-        // 追加
-        currentTags.push(tag);
-        button.classList.add("bg-blue-600", "text-white");
-        button.classList.remove("bg-gray-100");
+        tags.push(tag);
+        btn.classList.add("bg-blue-500", "text-white");
+        btn.classList.remove("bg-gray-100");
       }
-      tagInput.value = currentTags.join(", ");
+
+      input.value = tags.join(", ");
     });
+  });
+
+  // 既存タグがフォームにあればボタンを青くする
+  const currentTags = input.value.split(",").map((t) => t.trim());
+  buttons.forEach((btn) => {
+    if (currentTags.includes(btn.dataset.tag)) {
+      btn.classList.add("bg-blue-500", "text-white");
+      btn.classList.remove("bg-gray-100");
+    }
   });
 });

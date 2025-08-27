@@ -5,12 +5,15 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = if params[:tag]
-               Post.joins(:tags).where(tags: { name: params[:tag] }).order(created_at: :desc)
-             else
-               Post.all.order(created_at: :desc)
-             end
-    @tags = Tag.all.order(:name)
+    posts_scope = if params[:tag].present?
+                    Post.joins(:tags).where(tags: { name: params[:tag] }).distinct
+                  else
+                    Post.all
+                  end
+
+    @pagy, @posts = pagy(posts_scope, limit: 5)
+
+    @tags = Tag.order(:name)
   end
 
   # GET /posts/1 or /posts/1.json

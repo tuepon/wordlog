@@ -20,6 +20,7 @@
     <% if Rails.env.development? %>
       <div class="bg-gray-100 text-red-500 p-4 rounded-lg">
         <%= debug(params) %>
+        <%= debug(@pagy)%>
       </div>
     <% end %>
     <%= render 'shared/footer' %>

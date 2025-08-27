@@ -54,5 +54,7 @@
           </tbody>
       </table>
     </div>
-    <%== pagy_nav(@pagy) %>
+    <div class="join">
+      <%== pagy_nav(@pagy) if @pagy.pages > 1 %>
+    </div>
 </div>

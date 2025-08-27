@@ -5,9 +5,12 @@ class WordsController < ApplicationController
 
   def index
     @q = Word.ransack(params[:q])
-    words_scope = params[:q].present? ? @q.result(distinct: true) : (current_user ? current_user.words : Word.all)
-  
-    @pagy, @words = pagy(words_scope, items: 15)
+    words_scope = if params[:q].present?
+                    @q.result(distinct: true)
+                  else
+                    (current_user ? current_user.words : Word.all)
+                  end
+    @pagy, @words = pagy(words_scope, limit: 15)
   end
 
   def show
@@ -78,9 +81,9 @@ class WordsController < ApplicationController
 
   def authorize_own_word!
     @word = Word.find(params[:id])
-      unless @word.user == current_user
-      redirect_to words_path, alert: "自分の単語しか操作できません。"
-    end
+    return if @word.user == current_user
+
+    redirect_to words_path, alert: '自分の単語しか操作できません。'
   end
 
   def word_params

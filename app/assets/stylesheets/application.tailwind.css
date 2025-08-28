@@ -1,3 +1,4 @@
+@import "./pagy.tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,7 +21,7 @@
   }
 
   table {
-    @apply min-w-full bg-white border border-gray-300
+    @apply min-w-full bg-white border border-gray-300;
   }
 }
 
@@ -32,7 +33,7 @@
   .btn {
     @apply font-bold py-2 px-4 rounded ml-1 text-center;
   }
-  
+
   .btn-green {
     @apply bg-green-500 text-white hover:bg-green-800;
   }
@@ -48,5 +49,4 @@
   .table-cell {
     @apply py-2 px-4 border-b;
   }
-
 }

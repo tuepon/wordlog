@@ -56,7 +56,6 @@ gem 'roo'
 gem 'sidekiq'
 gem 'uri'
 gem 'activestorage-validator'
-gem 'tailwindcss-rails', '~> 2.0'
 gem 'aws-sdk-s3'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -97,3 +96,4 @@ end
 group :production do
   gem "pg", "1.3.5"
 end
+

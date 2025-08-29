@@ -1,11 +1,13 @@
 .pagy {
+  @reference "tailwindcss";
   @apply flex space-x-1 font-semibold text-sm text-gray-500;
   a:not(.gap) {
     @apply block rounded-lg px-3 py-1 bg-gray-200;
     &:hover {
       @apply bg-gray-300;
     }
-    &:not([href]) { /* disabled links */
+    &:not([href]) {
+      /* disabled links */
       @apply text-gray-300 bg-gray-100 cursor-default;
     }
     &.current {

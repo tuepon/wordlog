@@ -23,7 +23,7 @@
 
   <div class="my-5">
     <%= label_tag :tag_names, "Tags" %>
-    <%= text_field_tag :tag_names, @post.tags.map(&:name).join(', '),
+    <%= text_field_tag :tag_names, @post.tags.map(&:name).join(', '), data: { turbo: false },
         class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full",
         id: "tag-input" %>
   </div>

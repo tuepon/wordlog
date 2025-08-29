@@ -1,7 +1,8 @@
-@import "./pagy.tailwind.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "./pagy.tailwind.css";
 
 @layer base {
   h1 {

@@ -1,4 +1,7 @@
-document.addEventListener("DOMContentLoaded", () => {
+console.log("✅ tag_selector.js loaded");
+
+document.addEventListener("turbo:load", () => {
+  console.log("tag_selector loaded!"); // デバッグ
   const input = document.querySelector("#tag-input");
   const buttons = document.querySelectorAll(".tag-button");
 
@@ -6,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
+      console.log("clicked:", btn.dataset.tag); // デバッグ
       const tag = btn.dataset.tag;
       let tags = input.value
         .split(",")

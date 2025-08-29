@@ -1,20 +1,21 @@
 FROM ruby:3.2.8
 
+# Node.js & Yarn
 RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && \
     apt-get update && apt-get install -y nodejs build-essential libpq-dev && \
-    curl -o- -L https://yarnpkg.com/install.sh | bash 
+    npm install -g yarn
 
 WORKDIR /app
 
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
+# JS依存関係を先にインストール
+COPY package.json yarn.lock ./
+RUN yarn install
 
-RUN gem install bundler:2.4.19 && \
-    bundle install
-ENV PATH="/app/node_modules/.bin:$PATH"
+# Rails依存関係をインストール
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
 
-COPY . /app
+# アプリ全体をコピー
+COPY . .
 
-EXPOSE 3000
 
-CMD ["bin/dev"]

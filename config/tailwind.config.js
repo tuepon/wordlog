@@ -1,23 +1,21 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './public/*.html',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}'
+    "./app/views/**/*.html.erb",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/javascript/stylesheets/pagy.tailwind.css",
+  ],
+  safelist: [
+    "flex",
+    "space-x-1",
+    "font-semibold",
+    "text-sm",
+    "text-gray-500",
+    "hover:underline",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-    },
+    extend: {},
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/container-queries'),
-  ]
-}
+  plugins: [],
+};

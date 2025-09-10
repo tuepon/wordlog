@@ -10,12 +10,12 @@ Rails.application.configure do
   host = 'https://webisle.net'
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.smtp_settings = {
-    port: 587,
-    address: "smtp.mailgun.org",
-    user_name: ENV["MAILGUN_SMTP_LOGIN"],
-    password: ENV["MAILGUN_SMTP_PASSWORD"],
-    domain: "host", 
-    authentication: "plain"
+    :port           => 587,
+    :address        => 'smtp.mailgun.org',
+    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
+    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
+    :domain         => host,
+    :authentication => :plain,
   }
 
   # Code is not reloaded between requests.

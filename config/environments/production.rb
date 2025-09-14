@@ -6,17 +6,11 @@ Rails.application.configure do
   config.hosts << "www.webisle.net"
 
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :aws_sdk
+  
   host = 'https://webisle.net'
   config.action_mailer.default_url_options = { host: host }
-  config.action_mailer.smtp_settings = {
-    :port           => 587,
-    :address        => 'smtp.mailgun.org',
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => host,
-    :authentication => :plain,
-  }
+  config.action_mailer.default_options = { from: "noreply@webisle.net" }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

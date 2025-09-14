@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: ENV.fetch('CONTACT_RECIPIENT')
+  default from: 'noreply@webisle.net'
   layout 'mailer'
 end

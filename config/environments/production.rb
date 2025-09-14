@@ -6,7 +6,7 @@ Rails.application.configure do
   config.hosts << "www.webisle.net"
 
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.delivery_method = :ses
   
   host = 'https://webisle.net'
   config.action_mailer.default_url_options = { host: host }

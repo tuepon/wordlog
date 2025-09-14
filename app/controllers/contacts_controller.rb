@@ -7,9 +7,9 @@ class ContactsController < ApplicationController
 
   def confirm
     @contact = Contact.new(contact_params)
-    unless @contact.valid?
-      render :new
-    end
+    return if @contact.valid?
+
+    render :new
   end
 
   def create
@@ -17,7 +17,11 @@ class ContactsController < ApplicationController
     return render :new if params[:button] == 'back'
 
     if @contact.save
-      ContactMailer.mail_to_user(@contact.id).deliver_now
+      # For support
+      ContactMailer.mail_to_support(@contact.id).deliver_later
+
+      # For user
+      ContactMailer.confirmation_to_user(@contact.id).deliver_later
 
       session[:contact_id] = @contact.id
       return redirect_to complete_contacts_path

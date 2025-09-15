@@ -27,7 +27,7 @@
     <%= hidden_field_tag "contact[email]", @contact.email %>
     <%= hidden_field_tag "contact[telephone]", @contact.telephone %>
     <%= hidden_field_tag "contact[body]",  @contact.body %>
-  <div class="flex gap-4 mt-4">
+  <div class="flex gap-4 mt-4 mb-4">
     <%= form.button "送信", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer" %>
     <%= form.button "戻る", value: 'back', class: "rounded-lg py-3 px-5 bg-gray-300 text-white font-medium cursor-pointer" %>
   </div>

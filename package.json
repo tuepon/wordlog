@@ -5,8 +5,9 @@
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^8.0.5",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "daisyui": "^5.1.12",
-    "esbuild": "^0.19.7"
+    "esbuild": "^0.19.7",
+    "tailwindcss": "^4.1.12",
+    "daisyui": "^5.1.12"
   },
   "scripts": {
     "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
@@ -20,7 +21,6 @@
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
     "eslint": "^8.57.0",
-    "tailwindcss": "^4.1.12",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.5.4"
   }

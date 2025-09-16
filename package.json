@@ -5,25 +5,21 @@
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^8.0.5",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "daisyui": "^4.4.19",
+    "daisyui": "^5.1.12",
     "esbuild": "^0.19.7"
   },
   "scripts": {
-    "build:css": "postcss app/javascript/stylesheets/application.tailwind.css -o app/assets/builds/application.css",
-    "watch:css": "postcss app/javascript/stylesheets/application.tailwind.css -o app/assets/builds/application.css --watch",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
+    "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch",
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build": "yarn build:css && yarn build:js",
     "failure:js": "rm ./app/assets/builds/application.js && rm ./app/assets/builds/application.js.map",
     "dev": "tsc-watch --noClear -p tsconfig.json --onSuccess \"yarn build:js\" --onFailure \"yarn failure:js\""
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.12",
     "@typescript-eslint/eslint-plugin": "^8.1.0",
     "@typescript-eslint/parser": "^8.1.0",
-    "autoprefixer": "^10.4.21",
     "eslint": "^8.57.0",
-    "postcss": "^8.5.6",
-    "postcss-cli": "^11.0.1",
     "tailwindcss": "^4.1.12",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.5.4"

@@ -1,8 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@import "./pagy.tailwind.css";
+@import "tailwindcss";
+@import "./pagy.css";
+@plugin "daisyui";
 
 @layer base {
   h1 {

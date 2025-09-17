@@ -9,7 +9,7 @@
     "esbuild": "^0.19.7"
   },
   "scripts": {
-    "build:css": "yarn tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
+    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
     "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch",
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build": "yarn build:css && yarn build:js",

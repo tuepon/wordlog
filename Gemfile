@@ -45,8 +45,11 @@ gem 'bootsnap', require: false
 gem 'sassc-rails'
 
 # My additions
-gem 'deepl-rb', require: 'deepl'
+gem 'activestorage-validator'
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3'
 gem 'cssbundling-rails'
+gem 'deepl-rb', require: 'deepl'
 gem 'devise'
 gem 'jsbundling-rails', '~> 0.1.0'
 gem 'net-http'
@@ -55,9 +58,6 @@ gem 'ransack'
 gem 'roo'
 gem 'sidekiq'
 gem 'uri'
-gem 'activestorage-validator'
-gem 'aws-sdk-s3'
-gem 'aws-sdk-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -65,21 +65,21 @@ gem 'aws-sdk-rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'sqlite3', '~> 1.4'
-  gem 'dotenv-rails'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'foreman'
   gem 'rubocop', require: false # add
   gem 'rubocop-performance', require: false # add
   gem 'rubocop-rails', require: false # add
   gem 'rubocop-rspec' # add
   gem 'spring-commands-rspec'
   gem 'web-console'
-  gem 'foreman'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -95,6 +95,7 @@ group :test do
 end
 
 group :production do
-  gem "pg", "1.3.5"
+  gem 'pg', '1.3.5'
 end
 
+gem "tailwindcss-rails", "~> 4.3"

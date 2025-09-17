@@ -10,7 +10,7 @@
     "daisyui": "^5.1.12"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
+    "build:css": "node_modules/.bin/tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
     "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch",
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build": "yarn build:css && yarn build:js",

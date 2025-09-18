@@ -4,5 +4,5 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
   ],
-  plugins: [require("daisyui")],
+  plugins: [],
 };

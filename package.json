@@ -4,12 +4,14 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "@hotwired/turbo-rails": "^8.0.5",
+    "@tailwindcss/cli": "^4.1.13",
     "@tailwindcss/line-clamp": "^0.4.4",
-    "daisyui": "^5.1.12",
-    "esbuild": "^0.19.7"
+    "daisyui": "^5.0.0",
+    "esbuild": "^0.19.7",
+    "tailwindcss": "^4.1.13"
   },
   "scripts": {
-    "build:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css",
+    "build:css": "npx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css",
     "watch:css": "tailwindcss -i ./app/assets/stylesheets/application.css -o ./app/assets/builds/application.css --watch",
     "build:js": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds",
     "build": "yarn build:css && yarn build:js",

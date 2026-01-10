@@ -1,21 +1,24 @@
 <div class="pt-10 mx-auto w-full md:w-2/3 px-4 py-8">
   <h1 class="text-4xl font-semibold">Word List</h1>
       <div class="flex flex-wrap items-center gap-6 my-4">
-        <!-- 検索フォーム -->
+        <!-- Search word -->
           <%= search_form_for @q do |f| %>
           <div class="mb-4">
-            <label class="text-sm text-gray-600 mb-1">title or translation</label>
-            <%= f.search_field :title_or_translation_cont, class: "border rounded px-2 py-1" %>
+        <!--    <label class="text-sm text-gray-600 mb-1">title or translation</label> -->
+            <%= f.search_field :title_or_translation_cont, 
+                                class: "bg-white border rounded px-2 py-1",
+                                placeholder: "title or translation" 
+            %>
             <%= f.submit "Search", class: "btn bg-blue-600 text-white hover:bg-blue-700" %>
           </div>
           <% end %>
 
-          <!-- 新規追加 -->
+          <!-- Add word -->
           <% if user_signed_in? %>
           <div class="mt-2 h-full">
             <%= link_to '単語登録', new_word_path, { class: "btn btn-blue" } %>
           </div>
-          <!-- CSVインポート -->
+          <!-- Import from CSV file -->
           <div class="ml-4">
             <label class="text-sm text-gray-600 mb-1">Import from CSV</label>
             <%= form_tag import_words_path, multipart: true do %>

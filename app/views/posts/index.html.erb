@@ -35,12 +35,12 @@
             <p class="text-sm text-gray-500">
               <%= post.created_at.strftime("%B %d %H:%m, %Y") %> Posted by <%= post.user.username %>
             </p>
-            <div class="prose max-w-none">
+            <div class="prose prose-lg max-w-none">
               <%= simple_format(
-                  linkify(post.body.to_s.split("\n\n").first),
-                  {},
-                  sanitize: false
-                ) %>
+                linkify(truncate(post.body, length: 200, omission: "…")),
+                {},
+                sanitize: false
+              ) %>
             </div>
 
           <%= link_to "もっと読む", post_path(post), class: "text-blue-600 hover:text-blue-800" %>

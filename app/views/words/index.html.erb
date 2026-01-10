@@ -31,7 +31,7 @@
 
 
     <div class="overflow-x-auto w-full">
-      <table class="min-w-full table-auto border border-gray-200 mt-4">
+      <table class="table table-zebra w-full">
           <thead class="bg-gray-100 text-gray-700">
             <tr>
               <th class="px-4 py-2 border">Title</th>
@@ -41,16 +41,16 @@
             </tr>
           </thead>
 
-          <tbody class="bg-white">
+          <tbody>
             <% @words.each do |word| %>
-              <tr>
-                <td class="table-cell"><%= word.title %></td>
-                <td class="table-cell"><%= word.translation %></td>
-                <td class="table-cell"><%= word.description %></td>
-                <td class="table-cell"><%= link_to 'Show', word_path(word) %></td>
+              <tr class="hover">
+                <td class="table-cell px-2 py-2"><%= link_to word.title, word_path(word) %></td>
+                <td class="table-cell px-2 py-2"><%= word.translation %></td>
+                <td class="table-cell px-2 py-2"><%= word.description %></td>
+                <td class="table-cell px-2 py-2"><%= link_to 'Show', word_path(word) %></td>
                 <% if user_signed_in? %>
                   <td class="table-cell"><%= link_to 'Edit', edit_word_path(word) %></td>
-                <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
+                  <td class="table-cell"><%= link_to 'Delete', word_path(word), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %></td>
                 <% end %>
               </tr>
             <% end %>

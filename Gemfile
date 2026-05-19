@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.2.4'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '~> 7.0.5'
+gem 'rails', '~> 7.1.5'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
@@ -12,10 +12,9 @@ gem 'sprockets-rails'
 # Use sqlite3 as the database for Active Record
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.4'
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem 'importmap-rails'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails'
@@ -47,17 +46,18 @@ gem 'sassc-rails'
 # My additions
 gem 'deepl-rb', require: 'deepl'
 gem 'cssbundling-rails'
-gem 'devise'
+gem 'devise', '>= 4.9'
 gem 'jsbundling-rails', '~> 0.1.0'
 gem 'net-http'
-gem 'pagy'
+gem 'pagy', '~> 9.3'
 gem 'ransack'
 gem 'roo'
-gem 'sidekiq'
+gem 'sidekiq', '>= 7'
 gem 'uri'
 gem 'activestorage-validator'
 gem 'tailwindcss-rails', '~> 2.0'
 gem 'aws-sdk-s3'
+gem 'dotenv-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

@@ -22,35 +22,35 @@ describe User do
   describe 'validation' do
     describe 'username property' do
       describe 'validate char length'
-        context 'when username is equal or less than 20 chars' do
-          let(:username) { 'abcdefghijklmnopqrst' } # 20chars
+      context 'when username is equal or less than 50 chars' do
+        let(:username) { 'a' * 50 } # 50chars
 
-          it 'User object is valid' do
-            expect(user.valid?).to be(true)
-          end
+        it 'User object is valid' do
+          expect(user.valid?).to be(true)
         end
-
-        context 'when username is more than 20 chars' do
-          let(:username) { 'abcdefghijklmnopqrstu' } # 21chars
-
-          it 'User object is invalid' do
-            user.valid?
-
-            expect(user.valid?).to be(false)
-            expect(user.errors[:username]).to include('is too long (maximum is 20 characters)')
-          end
-        end        
       end
 
-      describe 'validate whether username exists' do
-        context 'when username is empty' do
-          let(:username) { '' }
-  
-          it 'User object is invalid' do
-            expect(user.valid?).to be(false)
-            expect(user.errors[:username]).to include("can't be blank")
-          end
+      context 'when username is more than 50 chars' do
+        let(:username) { 'a' * 51 } # 51chars
+
+        it 'User object is invalid' do
+          user.valid?
+
+          expect(user).not_to be_valid
+          expect(user.errors[:username]).to include('is too long (maximum is 50 characters)')
+        end
+      end
+    end
+
+    describe 'validate whether username exists' do
+      context 'when username is empty' do
+        let(:username) { '' }
+
+        it 'User object is invalid' do
+          expect(user).not_to be_valid
+          expect(user.errors[:username]).to include("can't be blank")
         end
       end
     end
   end
+end

@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'Home', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
+  before { driven_by :rack_test }
 
   describe 'validate index page' do
     it 'shows Home#index' do
       visit '/'
 
-      expect(page).to have_content('Home#index')
+      expect(page).to have_content('Home Page')
     end
   end
 
@@ -33,7 +31,7 @@ RSpec.describe 'Home', type: :system do
     context 'When logged in' do
       before do
         user = create(:user) # ログイン用のユーザーを作成
-        sign_in user # 作成したユーザーでログイン
+        login_as(user, scope: :user) # 作成したユーザーでログイン
         visit '/'
       end
 

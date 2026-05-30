@@ -41,23 +41,23 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
 
 # Use Sass to process CSS
-gem 'sassc-rails'
+# gem 'sassc-rails'
 
 # My additions
-gem 'deepl-rb', require: 'deepl'
+gem 'activestorage-validator'
+gem 'aws-sdk-s3'
 gem 'cssbundling-rails'
+gem 'deepl-rb', require: 'deepl'
 gem 'devise', '>= 4.9'
+gem 'dotenv-rails'
 gem 'jsbundling-rails', '~> 0.1.0'
 gem 'net-http'
 gem 'pagy', '~> 9.3'
 gem 'ransack'
 gem 'roo'
 gem 'sidekiq', '>= 7'
-gem 'uri'
-gem 'activestorage-validator'
 gem 'tailwindcss-rails', '~> 2.0'
-gem 'aws-sdk-s3'
-gem 'dotenv-rails'
+gem 'uri'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -93,5 +93,5 @@ group :test do
 end
 
 group :production do
-  gem "pg", "1.3.5"
+  gem 'pg', '1.3.5'
 end

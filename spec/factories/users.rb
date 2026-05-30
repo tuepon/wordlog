@@ -6,5 +6,6 @@ FactoryBot.define do
     end
     password { '123123' }
     password_confirmation { '123123' }
+    confirmed_at { Time.current }
   end
 end

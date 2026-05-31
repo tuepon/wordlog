@@ -46,7 +46,6 @@ gem 'bootsnap', require: false
 # My additions
 gem 'activestorage-validator'
 gem 'aws-sdk-s3'
-gem 'cssbundling-rails'
 gem 'deepl-rb', require: 'deepl'
 gem 'devise', '>= 4.9'
 gem 'dotenv-rails'

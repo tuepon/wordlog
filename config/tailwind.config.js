@@ -4,5 +4,5 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
   ],
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };
